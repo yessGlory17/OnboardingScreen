@@ -9,6 +9,7 @@ class OnBoarding extends StatefulWidget {
 class _OnBoardingState extends State<OnBoarding> {
   List<SliderModel> slides = new List<SliderModel>();
   int currentIndex = 0;
+  PageController pageController = new PageController(initialPage: 0);
   @override
   void initState() {
     // TODO: implement initState
@@ -18,12 +19,12 @@ class _OnBoardingState extends State<OnBoarding> {
 
   Widget pageIndexIndicator(bool isCurrentPage) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 2.0),
+      padding: EdgeInsets.symmetric(horizontal: 5.0),
       height: isCurrentPage ? 10.0 : 6.0,
       width: isCurrentPage ? 10.0 : 6.0,
       decoration: BoxDecoration(
-        color: isCurrentPage ? Colors.grey : Colors.grey.shade300,
-      ),
+          color: isCurrentPage ? Colors.grey : Colors.grey.shade300,
+          borderRadius: BorderRadius.circular(10)),
     );
   }
 
@@ -31,6 +32,7 @@ class _OnBoardingState extends State<OnBoarding> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView.builder(
+          controller: pageController,
           itemCount: slides.length,
           onPageChanged: (val) {
             setState(() {
@@ -41,15 +43,21 @@ class _OnBoardingState extends State<OnBoarding> {
             return SliderTile(slides[index].getImageAssetPath(),
                 slides[index].getTitle(), slides[index].getDesc());
           }),
-      bottomSheet: currentIndex != slides.length
+      bottomSheet: currentIndex != slides.length - 1
           ? Container(
               height: 60,
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  InkWell(
-                    onTap: () {},
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        pageController.animateToPage(slides.length,
+                            duration: Duration(milliseconds: 400),
+                            curve: Curves.linear);
+                      });
+                    },
                     child: Text("GEÇ"),
                   ),
                   Row(
@@ -60,14 +68,32 @@ class _OnBoardingState extends State<OnBoarding> {
                             : pageIndexIndicator(false)
                     ],
                   ),
-                  InkWell(
-                    onTap: () {},
-                    child: Text("BAŞLA"),
+                  GestureDetector(
+                    onTap: () {
+                      pageController.animateToPage(currentIndex + 1,
+                          duration: Duration(milliseconds: 400),
+                          curve: Curves.linearToEaseOut);
+                    },
+                    child: Text(
+                      "SONRAKİ",
+                    ),
                   ),
                 ],
               ),
             )
-          : Container(),
+          : Container(
+              alignment: Alignment.center,
+              width: MediaQuery.of(context).size.width,
+              height: 60,
+              color: Color(0xFF58CFFF),
+              child: Text(
+                "HAYDİ BAŞLAYALIM !",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
     );
   }
 }
@@ -104,6 +130,7 @@ class SliderTile extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 15.0, left: 20),
             child: Text(desc,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: "Roboto-Thin",
                   fontSize: 18,

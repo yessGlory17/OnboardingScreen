@@ -36,7 +36,7 @@ List<SliderModel> getSlides() {
   SliderModel sliderModel = new SliderModel();
 
   //1
-  sliderModel.setImageAssetPath("assets/images/i1.jpg");
+  sliderModel.setImageAssetPath("assets/images/i1.png");
   sliderModel.setTitle("Günlük Görevler");
   sliderModel.setDesc(
       "Günlük olarak yapacaklarının bir listesini burada tutabilirsin. Hatta kendine göre özel görev kategorileri oluşturup kullanabilirsin.");
@@ -44,7 +44,7 @@ List<SliderModel> getSlides() {
 
   sliderModel = new SliderModel();
   //2
-  sliderModel.setImageAssetPath("assets/images/i2.jpg");
+  sliderModel.setImageAssetPath("assets/images/i2.png");
   sliderModel.setTitle("Herşeyi Bir Arada Gör");
   sliderModel.setDesc(
       "Bütün gününü bir arada görmek zamanını yönetmeyi kolaylaştıracak. Bize güven ve hayatını organize etmemize izin ver!");
@@ -52,9 +52,10 @@ List<SliderModel> getSlides() {
 
   sliderModel = new SliderModel();
   //2
-  sliderModel.setImageAssetPath("assets/images/i3.jpg");
-  sliderModel.setTitle("Günlük Görevler");
-  sliderModel.setDesc("alkjsdlaksjdlaksjdlsajdlasjdlaskjdlasjdlasjdlalskd");
+  sliderModel.setImageAssetPath("assets/images/i3.png");
+  sliderModel.setTitle("Yeni Hayatına Hoşgeldin");
+  sliderModel.setDesc(
+      "Artık yeni hayatına adım atmak üzeresin. Planlı hayatını yaşamak için hazır ol! Sen hayatını daha iyi bir hâle getirmek üzeresin.");
   slides.add(sliderModel);
 
   return slides;
