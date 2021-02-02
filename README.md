@@ -4,7 +4,9 @@ My Flutter App Onboarding Screen
 
 
 ## Screenshoots
-
+![Onboarding Screen1](https://github.com/yessGlory17/OnboardingScreen/blob/main/screenshoots/s1.JPG)
+![Onboarding Screen2](https://github.com/yessGlory17/OnboardingScreen/blob/main/screenshoots/s2.JPG)
+![Onboarding Screen3](https://github.com/yessGlory17/OnboardingScreen/blob/main/screenshoots/s3.JPG)
 ## Getting Started
 
 This project is a starting point for a Flutter application.
