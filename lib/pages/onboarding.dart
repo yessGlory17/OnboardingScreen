@@ -128,7 +128,7 @@ class SliderTile extends StatelessWidget {
             height: 12,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 15.0, left: 20),
+            padding: const EdgeInsets.only(top: 15.0, left: 20, right: 20),
             child: Text(desc,
                 textAlign: TextAlign.center,
                 style: TextStyle(
